@@ -1,0 +1,11 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<h2>TARJETA DE CREDITO</h2>
+<label >numero de tarjeta</label><br/>
+<input type="text" id="numerotarjeta" name="numerotarjeta">
+<br/>
+<label >fecha de vencimiento</label><br/>
+<input type="text" id="fechavencimiento" name="fechavencimiento">
+<br/>
+<label >digitos de control</label><br/>
+<input type="text" id="digitocontrol" name="digitocontrol">

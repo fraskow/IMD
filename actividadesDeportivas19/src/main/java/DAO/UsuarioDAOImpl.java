@@ -35,7 +35,7 @@ public class UsuarioDAOImpl implements UsuarioDao {
         Query query = em.createQuery(jpql);
         query.setParameter("nick", usuario2.getNick());
         query.setParameter("password", usuario2.getPassword());
-        return (Usuario2) query.getSingleResult();
+        return (Usuario2) query.getResultList();
     }
 
     @Override

@@ -5,8 +5,11 @@
  */
 package controllers;
 
+import beans.Usuario2;
+import interfacesService.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PostRegistroServlet", urlPatterns = {"/PostRegistroServlet"})
 public class PostRegistroServlet extends HttpServlet {
 
+      @Inject
+      private UsuarioService usuarioService;
+
       /**
        * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
        * methods.
@@ -31,10 +37,34 @@ public class PostRegistroServlet extends HttpServlet {
        */
       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-            response.sendRedirect("./index.jsp");
-      }
+            String nick = request.getParameter("nick");
+            String password = request.getParameter("password");
+            String validatePassword = request.getParameter("validatePassword");
 
+            if (password.equals(validatePassword)) {
+                  Usuario2 usuario2 = new Usuario2();
+                  usuario2.setNick(request.getParameter("nick"));
+                  usuario2.setPassword(request.getParameter("password"));
+//                  Usuario2 usuarioBueno = ;
+                  if (usuarioService.findUsuario2ByNombre(usuario2)!=null) {
+                        request.getRequestDispatcher("./datos.jsp").forward(request, response);
+                  } else {
+                        usuario2.setNombre(request.getParameter("nombre"));
+                        usuario2.setPrimerApellido(request.getParameter("primerapellido"));
+                        usuario2.setSegundoApellido(request.getParameter("segundopellido"));
+                        usuario2.setEmail(request.getParameter("email"));
+                        usuario2.setTelefono(request.getParameter("telefono"));
+                        usuarioService.addUsuario2(usuario2);
+                        response.sendRedirect("./index.jsp");
+                  }
+            } else {
+
+                  response.sendRedirect("./datos.jsp");
+
+            }
+      }
       // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
       /**
        * Handles the HTTP <code>GET</code> method.
        *
