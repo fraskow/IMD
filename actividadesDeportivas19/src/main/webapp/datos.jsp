@@ -8,36 +8,44 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-      <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>JSP Page</title>
-      </head>
-      <body>
-                    <% Usuario2 usuario= (Usuario2) request.getSession().getAttribute("usuario");%>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+
         <form  method="GET">
-            <%if(usuario==null){%>
-         <%@include  file="formularionick.jspf" %>
-         <%}%>
-         <%@include  file="formulario_datos.jspf" %>
-         <%
-             if(usuario==null){
-         %>
-        
-         <%@include  file="paypal.jspf" %>
-          <%@include  file="tarjeta.jspf" %>
-          <%@include  file="transferencia.jspf" %>
-         <%}
-         if(usuario==null){%>
-         <input type="submit" formaction="PostRegistroServlet" value="registrar">
-          <%}else{%> 
-          <br>
-          <h2>Metodos de pago</h2>
-          <input type="submit" formaction="PreMetodoServlet" name="opcion" value="Eliminar">
-          <input type="submit" formaction="PreMetodoServlet" name="opcion" value="Agregar">
-          <br>
-         <input type="submit" formaction="PostModificarServlet" value="modificar">
-         <%}%>
-         <input type="submit" formaction="index.jsp" value="cancelar">
+
+            <c:if test="${usuario==null}">
+                <%@include  file="formularionick.jspf" %>
+            </c:if>
+            <%@include  file="formulario_datos.jspf" %>
+            <c:if test="${usuario==null}">
+                <select name="opciones" id="opciones">
+                    <option value="paypal">
+                        Paypal
+                    </option>
+                    <option value="tarjeta">
+                        Tarjeta
+                    </option>
+                    <option value="transferencia">
+                        Transferencia
+                    </option>
+                </select>
+            </c:if>
+
+            <c:if test="${usuario==null}">
+                <input type="submit" formaction="PostRegistroServlet" value="registrar">
+            </c:if>
+            <c:if test="${usuario!=null}">
+                <br>
+                <h2>Metodos de pago</h2>
+                <input type="submit" formaction="PreMetodoServlet" name="opcion" value="Eliminar">
+                <input type="submit" formaction="PreMetodoServlet" name="opcion" value="Agregar">
+                <br>
+                <input type="submit" formaction="PostModificarServlet" value="modificar">
+            </c:if>
+            <input type="submit" formaction="index.jsp" value="cancelar">
         </form>
-      </body>
+    </body>
 </html>

@@ -3,7 +3,7 @@
     Created on : 10 sept 2021, 10:10:22
     Author     : Admin
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="beans.Usuario2"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,10 +16,27 @@
         <form>
             <%  Usuario2 usuario= (Usuario2) request.getSession().getAttribute("usuario");
             String tipo = (String)request.getServletContext().getAttribute("tipo");%>
-            <% //combobox%>
+            <% // TODO combobox%>
+            <c:if test="${usuario!=null}">
+                <select name="opciones" id="opciones">
+                    <option value="paypal">
+                        Paypal
+                    </option>
+                    <option value="tarjeta">
+                        Tarjeta
+                    </option>
+                    <option value="transferencia">
+                        Transferencia
+                    </option>
+                </select>
+            </c:if>
+            <c:choose>
+                <c:when test="${opt=='paypal'}"><%@include  file="paypal.jspf" %></c:when>
+            </c:choose>
+            
             <% //swicht(combo)que se hara con css
-                //case "1":%>
-            <%@include  file="paypal.jspf" %>
+                //case "1": // TO DO JS = HIDDEN ALL Y ONCHANGE = MOSTRADO%>
+            
             <% //break;case "2":%>
             <%@include  file="tarjeta.jspf" %>
             <% //break;case "3":%>

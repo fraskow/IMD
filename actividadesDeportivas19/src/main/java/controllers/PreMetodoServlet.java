@@ -31,22 +31,27 @@ public class PreMetodoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tipo = null ;
-        String opcion=request.getParameter("opcion");
-        switch(opcion)
-        {
+        String tipo = null;
+        String opcion = request.getParameter("opcion");
+//        String[] opciones = request.getParameterValues("opciones");
+//        for (String opt : opciones) {
+//            request.setAttribute("opt", opt);
+//        }
+        
+        switch (opcion) {
             case "Agregar":
-                tipo="agregar";
-                 
-                 break;
-            case"Eliminar":
-                tipo="borrar";
-                 
-                 break;
-                 default:break;
+                tipo = "agregar";
+
+                break;
+            case "Eliminar":
+                tipo = "borrar";
+
+                break;
+            default:
+                break;
         }
-        request.getServletContext().setAttribute("tipo",tipo);
-        response.sendRedirect("./metodo.jsp");
+        request.getServletContext().setAttribute("tipo", tipo);
+        request.getRequestDispatcher("metodo.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
