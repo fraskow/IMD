@@ -13,6 +13,7 @@
             <title>JSP Page</title>
       </head>
       <body>
+          <h1>Test</h1>
             <form><table style="width:100%">
                 <c:if test="${usuario==null}">
                     <tr>
