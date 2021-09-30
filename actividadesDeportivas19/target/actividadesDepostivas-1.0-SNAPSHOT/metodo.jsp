@@ -17,7 +17,7 @@
             <%  Usuario2 usuario= (Usuario2) request.getSession().getAttribute("usuario");
             String tipo = (String)request.getServletContext().getAttribute("tipo");%>
             <% //combobox%>
-            <% //swicht(combo)
+            <% //swicht(combo)que se hara con css
                 //case "1":%>
             <%@include  file="paypal.jspf" %>
             <% //break;case "2":%>
