@@ -4,7 +4,7 @@
     Author     : Admin
 --%>
 
-<%@page import="beans.Usuario"%>
+<%@page import="beans.Usuario2"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
     </head>
     <body>
         <form>
-            <%  Usuario usuario= (Usuario) request.getSession().getAttribute("usuario");
+            <%  Usuario2 usuario= (Usuario2) request.getSession().getAttribute("usuario");
             String tipo = (String)request.getServletContext().getAttribute("tipo");%>
             <% //combobox%>
             <% //swicht(combo)
@@ -25,10 +25,10 @@
             <% //break;case "3":%>
             <%@include  file="transferencia.jspf" %>
             <%//break;default:break;%>
-            <%if(tipo=="anadir") {%>
-            <input type="submit" formaction="./PostBorrarServlet" value="Añadir">
+            <%if(tipo=="agregar") {%>
+            <input type="submit" formaction="./PostAnadirServlet" value="agregar">
             <%}else{%>
-            <input type="submit" formaction="./PostAnadirServlet" value="Borrar">
+            <input type="submit" formaction="./PostBorrarServlet" value="Borrar">
             <%}%>
             <input type="submit" formaction="./datos.jsp" value="cancelar">
         </form>

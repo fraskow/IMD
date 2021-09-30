@@ -33,7 +33,7 @@
           <br>
           <h2>Metodos de pago</h2>
           <input type="submit" formaction="PreMetodoServlet" name="opcion" value="Eliminar">
-          <input type="submit" formaction="PreMetodoServlet'" name="opcion" value="Agregar">
+          <input type="submit" formaction="PreMetodoServlet" name="opcion" value="Agregar">
           <br>
          <input type="submit" formaction="PostModificarServlet" value="modificar">
          <%}%>

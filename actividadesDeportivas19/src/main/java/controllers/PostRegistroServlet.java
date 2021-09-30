@@ -45,8 +45,8 @@ public class PostRegistroServlet extends HttpServlet {
                   Usuario2 usuario2 = new Usuario2();
                   usuario2.setNick(request.getParameter("nick"));
                   usuario2.setPassword(request.getParameter("password"));
-//                  Usuario2 usuarioBueno = ;
-                  if (usuarioService.findUsuario2ByNombre(usuario2)!=null) {
+                Usuario2 usuarioBueno = usuarioService.findUsuario2ByNombre(usuario2);
+                  if (usuarioBueno.getNick() != null) {
                         request.getRequestDispatcher("./datos.jsp").forward(request, response);
                   } else {
                         usuario2.setNombre(request.getParameter("nombre"));

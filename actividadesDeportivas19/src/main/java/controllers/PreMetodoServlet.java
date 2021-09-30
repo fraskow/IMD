@@ -36,7 +36,7 @@ public class PreMetodoServlet extends HttpServlet {
         switch(opcion)
         {
             case "Agregar":
-                tipo="anadir";
+                tipo="agregar";
                  
                  break;
             case"Eliminar":

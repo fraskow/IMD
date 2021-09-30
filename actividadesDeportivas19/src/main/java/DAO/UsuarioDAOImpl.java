@@ -20,7 +20,7 @@ import javax.persistence.Query;
 @Stateless
 public class UsuarioDAOImpl implements UsuarioDao {
 
-    @PersistenceContext(unitName = "imdJpa")   
+    @PersistenceContext(unitName = "imdJpa")
     private EntityManager em;
 
     @Override
@@ -31,11 +31,16 @@ public class UsuarioDAOImpl implements UsuarioDao {
     @Override
     public Usuario2 findUsuario2ByNombre(Usuario2 usuario2) {
         String jpql = "select u from Usuario2 u where u.nick= :nick AND u.password= :password";
-        
-        Query query = em.createQuery(jpql);
-        query.setParameter("nick", usuario2.getNick());
-        query.setParameter("password", usuario2.getPassword());
-        return (Usuario2) query.getResultList();
+        try {
+            Query query = em.createQuery(jpql);
+            query.setParameter("nick", usuario2.getNick());
+            query.setParameter("password", usuario2.getPassword());
+            Usuario2 usuariobueno=  (Usuario2) query.getSingleResult();
+            return usuariobueno;
+        } catch (Exception e) {
+            Usuario2 usuariomalo=new Usuario2();
+            return usuariomalo;
+        }
     }
 
     @Override
