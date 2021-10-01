@@ -1,0 +1,17 @@
+en registro:
+	
+	problema- saber que metodos de pago se han agregado
+	
+	solucion- usar un filtro que meta en una coleccion que 
+	datos estan completamente rellenos
+
+en metodo.jsp:
+
+	problema: si usamos el mismo metodo que registro acabariamos
+	añadiendo metodos de pago con los mismos datos y si borraramos 
+	acabaria borrando todos los metodos.
+	
+	solucion: podriamos hacer que cada jspf fuera un formulario unico 
+		con su boton (o usar la funcion formaction en sus jspf para 
+		distinguir que metodo de pago se debe eliminar o agregar)
+		el problema es como combinar con los metodos anteriores
