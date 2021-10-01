@@ -13,10 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form>
-            <%  Usuario2 usuario= (Usuario2) request.getSession().getAttribute("usuario");
-            String tipo = (String)request.getServletContext().getAttribute("tipo");%>
-            <% // TODO combobox%>
+        <form>         
             <c:if test="${usuario!=null}">
                 <select name="opciones" id="opciones">
                     <option value="paypal">
@@ -33,7 +30,6 @@
             <c:choose>
                 <c:when test="${opt=='paypal'}"><%@include  file="paypal.jspf" %></c:when>
             </c:choose>
-            
             <% //swicht(combo)que se hara con cssTO DO JS = HIDDEN ALL Y ONCHANGE = MOSTRADO
                 //case "1": // %>
             <%@include  file="paypal.jspf" %>
@@ -43,10 +39,10 @@
             <%@include  file="transferencia.jspf" %>
             <%//break;default:break;%>
             <c:if test="${tipo=='agregar'}">
-            <input type="submit" formaction="./PostAnadirServlet" value="agregar">
+                <input type="submit" formaction="./PostAnadirServlet" value="agregar">
             </c:if>
             <c:if test="${tipo=='borrar'}">
-            <input type="submit" formaction="./PostBorrarServlet" value="Borrar">     
+                <input type="submit" formaction="./PostBorrarServlet" value="Borrar">     
             </c:if>
             <input type="submit" formaction="./datos.jsp" value="cancelar">
         </form>
