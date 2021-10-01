@@ -13,9 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-
         <form  method="GET">
-
             <c:if test="${usuario==null}">
                 <%@include  file="formularionick.jspf" %>
             </c:if>
@@ -33,7 +31,6 @@
                     </option>
                 </select>
             </c:if>
-
             <c:if test="${usuario==null}">
                 <input type="submit" formaction="PostRegistroServlet" value="registrar">
             </c:if>

@@ -34,19 +34,20 @@
                 <c:when test="${opt=='paypal'}"><%@include  file="paypal.jspf" %></c:when>
             </c:choose>
             
-            <% //swicht(combo)que se hara con css
-                //case "1": // TO DO JS = HIDDEN ALL Y ONCHANGE = MOSTRADO%>
-            
+            <% //swicht(combo)que se hara con cssTO DO JS = HIDDEN ALL Y ONCHANGE = MOSTRADO
+                //case "1": // %>
+            <%@include  file="paypal.jspf" %>
             <% //break;case "2":%>
             <%@include  file="tarjeta.jspf" %>
             <% //break;case "3":%>
             <%@include  file="transferencia.jspf" %>
             <%//break;default:break;%>
-            <%if(tipo=="agregar") {%>
+            <c:if test="${tipo=='agregar'}">
             <input type="submit" formaction="./PostAnadirServlet" value="agregar">
-            <%}else{%>
-            <input type="submit" formaction="./PostBorrarServlet" value="Borrar">
-            <%}%>
+            </c:if>
+            <c:if test="${tipo=='borrar'}">
+            <input type="submit" formaction="./PostBorrarServlet" value="Borrar">     
+            </c:if>
             <input type="submit" formaction="./datos.jsp" value="cancelar">
         </form>
     </body>
