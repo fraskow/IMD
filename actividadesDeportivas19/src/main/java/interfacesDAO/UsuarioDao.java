@@ -5,7 +5,7 @@
  */
 package interfacesDAO;
 
-import beans.Usuario2;
+import beans.Usuario;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,19 +15,19 @@ import javax.ejb.Local;
  */
 @Local
 public interface UsuarioDao {
-      public List<Usuario2> listarUsuario2();
+      public List<Usuario> listarUsuario();
 
-    public Usuario2 findUsuario2ByNombre(Usuario2 usuario2);
+    public Usuario findUsuarioByNombre(Usuario usuario);
 
-    public Usuario2 findUsuario2ByID(Usuario2 usuario2);
+    public Usuario findUsuarioByID(Usuario usuario);
 
-    public Usuario2 findUsuario2ByID(int id);
+    public Usuario findUsuarioByID(int id);
 
-    public void addUsuario2(Usuario2 usuario2);
+    public void addUsuario(Usuario usuario);
 
-    public void updateUsuario2(Usuario2 usuario2);
+    public void updateUsuario(Usuario usuario);
 
-    public void refreshUsuario2(Usuario2 usuario2);
+    public void refreshUsuario(Usuario usuario);
 
-    public void removeUsuario2(Usuario2 usuario2);
+    public void removeUsuario(Usuario usuario);
 }

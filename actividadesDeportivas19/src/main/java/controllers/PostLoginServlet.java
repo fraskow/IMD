@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import beans.Usuario2;
+import beans.Usuario;
 import interfacesService.UsuarioService;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -36,10 +36,10 @@ public class PostLoginServlet extends HttpServlet {
        */
       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-            Usuario2 usuario2 = new Usuario2();
-            usuario2.setNick(request.getParameter("nick"));
-            usuario2.setPassword(request.getParameter("password"));
-            Usuario2 usuarioBueno = usuarioService.findUsuario2ByNombre(usuario2);
+            Usuario usuario = new Usuario();
+            usuario.setNick(request.getParameter("nick"));
+            usuario.setPassword(request.getParameter("password"));
+            Usuario usuarioBueno = usuarioService.findUsuarioByNombre(usuario);
             if (usuarioBueno.getNick() == null) {
                   request.getRequestDispatcher("./login.jsp").forward(request, response);
             } else {

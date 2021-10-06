@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import beans.Usuario2;
+import beans.Usuario;
 import interfacesDAO.UsuarioDao;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -24,53 +24,53 @@ public class UsuarioDAOImpl implements UsuarioDao {
     private EntityManager em;
 
     @Override
-    public List<Usuario2> listarUsuario2() {
-        return em.createNamedQuery("Usuario2.findAll").getResultList();
+    public List<Usuario> listarUsuario() {
+        return em.createNamedQuery("Usuario.findAll").getResultList();
     }
 
     @Override
-    public Usuario2 findUsuario2ByNombre(Usuario2 usuario2) {
-        String jpql = "select u from Usuario2 u where u.nick= :nick AND u.password= :password";
+    public Usuario findUsuarioByNombre(Usuario usuario) {
+        String jpql = "select u from Usuario u where u.nick= :nick AND u.password= :password";
         try {
             Query query = em.createQuery(jpql);
-            query.setParameter("nick", usuario2.getNick());
-            query.setParameter("password", usuario2.getPassword());
-            Usuario2 usuariobueno=  (Usuario2) query.getSingleResult();
+            query.setParameter("nick", usuario.getNick());
+            query.setParameter("password", usuario.getPassword());
+            Usuario usuariobueno=  (Usuario) query.getSingleResult();
             return usuariobueno;
         } catch (Exception e) {
-            Usuario2 usuariomalo=new Usuario2();
+            Usuario usuariomalo=new Usuario();
             return usuariomalo;
         }
     }
 
     @Override
-    public Usuario2 findUsuario2ByID(Usuario2 usuario2) {
-        return em.find(Usuario2.class, usuario2.getIdUsuario2());
+    public Usuario findUsuarioByID(Usuario usuario) {
+        return em.find(Usuario.class, usuario.getIdUsuario());
     }
 
     @Override
-    public Usuario2 findUsuario2ByID(int id) {
-        return em.find(Usuario2.class, id);
+    public Usuario findUsuarioByID(int id) {
+        return em.find(Usuario.class, id);
     }
 
     @Override
-    public void addUsuario2(Usuario2 usuario2) {
-        em.persist(usuario2);
+    public void addUsuario(Usuario usuario) {
+        em.persist(usuario);
     }
 
     @Override
-    public void updateUsuario2(Usuario2 usuario2) {
-        em.merge(usuario2);
+    public void updateUsuario(Usuario usuario) {
+        em.merge(usuario);
     }
 
     @Override
-    public void refreshUsuario2(Usuario2 usuario2) {
-        em.refresh(em.merge(usuario2));
+    public void refreshUsuario(Usuario usuario) {
+        em.refresh(em.merge(usuario));
     }
 
     @Override
-    public void removeUsuario2(Usuario2 usuario2) {
-        em.remove(em.merge(usuario2));
+    public void removeUsuario(Usuario usuario) {
+        em.remove(em.merge(usuario));
     }
 
 }

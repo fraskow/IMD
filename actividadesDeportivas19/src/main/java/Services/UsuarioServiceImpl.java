@@ -6,7 +6,7 @@
 package Services;
 
 import DAO.UsuarioDAOImpl;
-import beans.Usuario2;
+import beans.Usuario;
 import interfacesDAO.UsuarioDao;
 import interfacesService.UsuarioService;
 import java.util.List;
@@ -23,44 +23,44 @@ public class UsuarioServiceImpl implements UsuarioService{
       private UsuarioDao usudao;
               
       @Override
-      public List<Usuario2> listarUsuario2() {
-            return usudao.listarUsuario2();
+      public List<Usuario> listarUsuario() {
+            return usudao.listarUsuario();
       }
 
       @Override
-      public Usuario2 findUsuario2ByNombre(Usuario2 usuario2) {
-            return usudao.findUsuario2ByNombre(usuario2);
+      public Usuario findUsuarioByNombre(Usuario usuario) {
+            return usudao.findUsuarioByNombre(usuario);
       }
 
       @Override
-      public Usuario2 findUsuario2ByID(Usuario2 usuario2) {
-            return usudao.findUsuario2ByID(usuario2);
+      public Usuario findUsuarioByID(Usuario usuario) {
+            return usudao.findUsuarioByID(usuario);
       }
 
       @Override
-      public Usuario2 findUsuario2ByID(int id) {
-            return usudao.findUsuario2ByID(id);
+      public Usuario findUsuarioByID(int id) {
+            return usudao.findUsuarioByID(id);
       }
 
       @Override
-      public void addUsuario2(Usuario2 usuario2) {
-            usudao.addUsuario2(usuario2);
+      public void addUsuario(Usuario usuario) {
+            usudao.addUsuario(usuario);
       }
 
       @Override
-      public void updateUsuario2(Usuario2 usuario2) {
-            usudao.updateUsuario2(usuario2);
+      public void updateUsuario(Usuario usuario) {
+            usudao.updateUsuario(usuario);
     
       }
 
       @Override
-      public void refreshUsuario2(Usuario2 usuario2) {
-            usudao.refreshUsuario2(usuario2);
+      public void refreshUsuario(Usuario usuario) {
+            usudao.refreshUsuario(usuario);
       }
 
       @Override
-      public void removeUsuario2(Usuario2 usuario2) {
-            usudao.removeUsuario2(usuario2);
+      public void removeUsuario(Usuario usuario) {
+            usudao.removeUsuario(usuario);
       }
       
 }

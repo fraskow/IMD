@@ -4,13 +4,18 @@
     Author     : nators
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="beans.Usuario2"%>
+<%@page import="beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+         <c:if test="${usuario==null}">
+        <title>Registros</title>
+         </c:if>
+        <c:if test="${usuario!=null}">
+        <title>Modificar perfil</title>
+         </c:if>
     </head>
     <body>
         <form  method="GET">

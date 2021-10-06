@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import beans.Usuario2;
+import beans.Usuario;
 import interfacesService.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,19 +42,19 @@ public class PostRegistroServlet extends HttpServlet {
             String validatePassword = request.getParameter("validatePassword");
 
             if (password.equals(validatePassword)) {
-                  Usuario2 usuario2 = new Usuario2();
-                  usuario2.setNick(request.getParameter("nick"));
-                  usuario2.setPassword(request.getParameter("password"));
-                Usuario2 usuarioBueno = usuarioService.findUsuario2ByNombre(usuario2);
+                  Usuario usuario = new Usuario();
+                  usuario.setNick(request.getParameter("nick"));
+                  usuario.setPassword(request.getParameter("password"));
+                Usuario usuarioBueno = usuarioService.findUsuarioByNombre(usuario);
                   if (usuarioBueno.getNick() != null) {
                         request.getRequestDispatcher("./datos.jsp").forward(request, response);
                   } else {
-                        usuario2.setNombre(request.getParameter("nombre"));
-                        usuario2.setPrimerApellido(request.getParameter("primerapellido"));
-                        usuario2.setSegundoApellido(request.getParameter("segundopellido"));
-                        usuario2.setEmail(request.getParameter("email"));
-                        usuario2.setTelefono(request.getParameter("telefono"));
-                        usuarioService.addUsuario2(usuario2);
+                        usuario.setNombre(request.getParameter("nombre"));
+                        usuario.setPrimerApellido(request.getParameter("primerapellido"));
+                        usuario.setSegundoApellido(request.getParameter("segundopellido"));
+                        usuario.setEmail(request.getParameter("email"));
+                        usuario.setTelefono(request.getParameter("telefono"));
+                        usuarioService.addUsuario(usuario);
                         response.sendRedirect("./index.jsp");
                   }
             } else {

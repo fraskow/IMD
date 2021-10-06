@@ -2,7 +2,6 @@ controllers\PreMetodoServlet.class
 controllers\PostCerrarSesionServlet.class
 com\arelance\actividadesdepostivas\resources\JavaEE8Resource.class
 controllers\PostModificarServlet.class
-beans\Usuario2.class
 controllers\PostAnadirServlet.class
 controllers\PostLoginServlet.class
 com\arelance\actividadesdepostivas\JAXRSConfiguration.class
@@ -11,6 +10,7 @@ controllers\PostInscribirServlet.class
 controllers\PostRegistroServlet.class
 controllers\PreIndexServlet.class
 controllers\PostBorrarServlet.class
+beans\Usuario.class
 controllers\PreInscribirServlet.class
 Services\UsuarioServiceImpl.class
 interfacesDAO\UsuarioDao.class
